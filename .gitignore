@@ -11,3 +11,5 @@
 app/src/androidTest
 sample/src/androidTest
 sample/src/test
+/library/src/androidTest/
+/library/src/test/

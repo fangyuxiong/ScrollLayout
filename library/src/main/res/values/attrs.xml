@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ScrollLayoutParams">
+        <attr name="slp_layout_start_from_here" format="boolean|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="ScrollLayout">
+        <attr name="slt_style" format="reference"/>
+        <attr name="slt_resistance" format="float|reference"/>
+        <attr name="slt_to_normal_offset" format="integer|reference"/>
+        <attr name="slt_fling_offset" format="integer|reference"/>
+        <attr name="slt_do_3d_anim" format="boolean|reference"/>
+        <attr name="slt_two_children_adapter" format="string|reference"/>
+        <attr name="slt_can_scroll_by_touch" format="boolean|reference"/>
+        <attr name="slt_draw_children_interface" format="string|reference"/>
+        <attr name="slt_scroll_orientation" format="enum">
+            <enum name="vertical" value="0"/>
+            <enum name="horizontal" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="FadeDrawChildren">
+        <attr name="fdc_min_alpha" format="float|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="FlipLikeRotateBoxAttr">
+        <attr name="flrb_each_degree" format="float|reference"/>
+    </declare-styleable>
+</resources>

@@ -8,4 +8,52 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="button_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="next_button_style" parent="@style/button_style">
+        <item name="android:id">@id/next_button</item>
+        <item name="android:text">next</item>
+    </style>
+
+    <style name="pre_button_style" parent="@style/button_style">
+        <item name="android:id">@id/pre_button</item>
+        <item name="android:text">pre</item>
+    </style>
+
+    <style name="goto_button_style" parent="@style/button_style">
+        <item name="android:id">@id/goto_button</item>
+        <item name="android:text">goto</item>
+    </style>
+
+    <style name="edit_style">
+        <item name="android:id">@id/goto_edit</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:inputType">number</item>
+        <item name="android:text">0</item>
+    </style>
+
+    <style name="children_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="scroll_layout_style">
+        <item name="android:id">@id/flip_layout</item>
+        <item name="slt_style">@style/normal_scroll_style</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="normal_scroll_style">
+        <item name="flrb_each_degree">90</item>
+        <item name="slt_resistance">3</item>
+        <item name="slt_to_normal_offset">3</item>
+        <item name="slt_fling_offset">1</item>
+        <item name="slt_do_3d_anim">true</item>
+        <item name="slt_can_scroll_by_touch">true</item>
+        <item name="slt_scroll_orientation">horizontal</item>
+    </style>
 </resources>

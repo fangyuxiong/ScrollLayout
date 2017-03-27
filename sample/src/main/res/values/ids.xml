@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="flip_layout" type="id"/>
+    <item name="next_button" type="id"/>
+    <item name="next_smooth_button" type="id"/>
+    <item name="pre_smooth_button" type="id"/>
+    <item name="pre_button" type="id"/>
+    <item name="goto_button" type="id"/>
+    <item name="goto_smooth_button" type="id"/>
+    <item name="goto_edit" type="id"/>
+</resources>

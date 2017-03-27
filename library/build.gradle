@@ -1,10 +1,10 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 24
     buildToolsVersion '25.0.0'
+
     defaultConfig {
-        applicationId "com.xfy.scrolllayout"
         minSdkVersion 18
         targetSdkVersion 24
         versionCode 1
@@ -20,5 +20,4 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
-    compile project(':library')
 }

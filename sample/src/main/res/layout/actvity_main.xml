@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/one"
+                style="@style/button_style"
+                android:text="test normal"/>
+
+            <Button
+                android:id="@+id/two"
+                style="@style/button_style"
+                android:text="test normal"/>
+            <Button
+                android:id="@+id/three"
+                style="@style/button_style"
+                android:text="test normal"/>
+            <Button
+                android:id="@+id/four"
+                style="@style/button_style"
+                android:text="test normal"/>
+            <Button
+                android:id="@+id/five"
+                style="@style/button_style"
+                android:text="test normal"/>
+            <Button
+                android:id="@+id/six"
+                style="@style/button_style"
+                android:text="test normal"/>
+            <Button
+                android:id="@+id/seven"
+                style="@style/button_style"
+                android:text="test normal"/>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
