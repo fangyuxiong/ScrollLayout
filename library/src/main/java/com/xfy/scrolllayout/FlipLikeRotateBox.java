@@ -81,6 +81,8 @@ public class FlipLikeRotateBox implements IDrawChildren {
                 }
                 centerX = mWidth / 2;
                 centerY = (scrollY > curScreenY) ? curScreenY + mHeight : curScreenY;
+                centerX += parent.getPaddingLeft();
+                centerY += parent.getPaddingTop();
                 degree = eachDegree * (scrollY - curScreenY) / mHeight;
                 if (degree > 90 || degree < -90) {
                     return;

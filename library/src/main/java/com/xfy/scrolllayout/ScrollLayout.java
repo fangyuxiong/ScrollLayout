@@ -31,8 +31,10 @@ import java.lang.reflect.InvocationTargetException;
  *
  * 注意：
  *      子控件比如大于1个
- *      子控件若只有两个，必须添加属性'flt_two_children_adapter="你的{@link TwoChildrenAdapter}全名"'，若修改其中一个子View，必须调用{@link #notifyViewChanged(View)}
+ *      子控件若只有两个，必须添加属性'flt_two_children_adapter="你的{@link TwoChildrenAdapter}类名(规则参考{@link #fillPackageName(String)})"'，
+ *      若修改其中一个子View，必须调用{@link #notifyViewChanged(View)}
  *      若通过{@link #addView(View)}添加子控件，添加完所有子控件后，必须调用{@link #notifyAddChildViewFinish()}刷新布局
+ *      可添加属性'slt_draw_children_interface="{@link IDrawChildren}类名"'来实现切换动画
  * <p>
  * <b>XML attributes</b>
  * <p>
@@ -44,7 +46,7 @@ import java.lang.reflect.InvocationTargetException;
  *     slt_two_children_adapter     2个子View时使用的{@link TwoChildrenAdapter}
  *     slt_can_scroll_by_touch      是否能用手指滚动，默认true {@link #setCanScrollByTouch(boolean)}
  *     slt_scroll_orientation       滚动方向 {@link #VERTICAL} {@link #HORIZONTAL}
- *     slt_draw_children_interface  滚动时3D动画实现，默认为{@link FlipLikeRotateBox} 设置时须设置为类名全名
+ *     slt_draw_children_interface  滚动时3D动画实现，默认为{@link FlipLikeRotateBox} 设置规则参考{@link #fillPackageName(String)}
  */
 public class ScrollLayout extends ViewGroup {
     private static final String TAG = "ScrollLayout---xfy---";
@@ -153,6 +155,7 @@ public class ScrollLayout extends ViewGroup {
     }
 
     private void initTwoChildrenAdapter() {
+        twoChildrenAdapterClass = fillPackageName(twoChildrenAdapterClass);
         if (!TextUtils.isEmpty(twoChildrenAdapterClass)) {
             try {
                 Class<? extends TwoChildrenAdapter> clz = (Class<? extends TwoChildrenAdapter>) Class.forName(twoChildrenAdapterClass);
@@ -171,7 +174,29 @@ public class ScrollLayout extends ViewGroup {
         }
     }
 
+    /**
+     * 给类名前添加包名
+     * 若类名以 <code>.</code> 开头，默认在前面添加{@link #getContext()}的包名
+     * 若类名不包含 <code>.</code>，默认包名为{@link ScrollLayout}包名(com.xfy.scrolllayout)
+     * 若是全名，返回全名
+     * @param clz
+     * @return
+     */
+    private String fillPackageName(String clz) {
+        if (TextUtils.isEmpty(clz))
+            return clz;
+        if (clz.startsWith(".")) {
+            String packageName = getContext().getClass().getPackage().getName();
+            return packageName + clz;
+        }
+        if (clz.contains(".")) {
+            return clz;
+        }
+        return getClass().getPackage().getName() + "." + clz;
+    }
+
     private void initIDrawChildren(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        iDrawChildrenClass = fillPackageName(iDrawChildrenClass);
         if (!TextUtils.isEmpty(iDrawChildrenClass)) {
             try {
                 Class<? extends IDrawChildren> clz = (Class<? extends IDrawChildren>) Class.forName(iDrawChildrenClass);
@@ -1006,8 +1031,17 @@ public class ScrollLayout extends ViewGroup {
     private void notifyChangeListener() {
         if (onChangeListener != null) {
             int index = currentIndex;
-            if (onlyTwoChildren && index >= 2) {
-                index -= 2;
+            if (onlyTwoChildren) {
+                View v = children[index];
+                if (v == getChildAt(0)) {
+                    onChangeListener.changeTo(v, 0);
+                } else if (v == getChildAt(1)) {
+                    onChangeListener.changeTo(v, 1);
+                } else {
+                    v = children[(index + 2) % children.length];
+                    onChangeListener.changeTo(v, getViewIndex(v));
+                }
+                return;
             }
             final View v = children[index];
             onChangeListener.changeTo(v, getViewIndex(v));
@@ -1159,6 +1193,7 @@ public class ScrollLayout extends ViewGroup {
             toNextAction(-MAX_SPEED);
         else {
             addNext(1);
+            invalidate();
             notifyChangeListener();
         }
     }
@@ -1170,6 +1205,7 @@ public class ScrollLayout extends ViewGroup {
             toPreAction(MAX_SPEED);
         else {
             addPre(1);
+            invalidate();
             notifyChangeListener();
         }
     }
@@ -1199,6 +1235,7 @@ public class ScrollLayout extends ViewGroup {
                 toNextAction(-getSpeedByAddCount(offset));
             else {
                 addNext(offset);
+                invalidate();
                 notifyChangeListener();
             }
         } else if (index < currentIndex) {
@@ -1207,6 +1244,7 @@ public class ScrollLayout extends ViewGroup {
                 toPreAction(getSpeedByAddCount(offset));
             else {
                 addPre(offset);
+                invalidate();
                 notifyChangeListener();
             }
         }

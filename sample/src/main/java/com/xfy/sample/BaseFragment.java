@@ -19,7 +19,7 @@ import com.xfy.scrolllayout.ScrollLayout;
 public abstract class BaseFragment extends Fragment implements View.OnClickListener, OnChangeListener {
 
     protected View rootView;
-    protected ScrollLayout flipLayout;
+    protected ScrollLayout scrollLayout;
     protected EditText gotoEdit;
     private Toast toast;
     @Nullable
@@ -40,7 +40,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
     protected void initViews() {
-        flipLayout = findViewById(R.id.flip_layout);
+        scrollLayout = findViewById(R.id.flip_layout);
         gotoEdit = findViewById(R.id.goto_edit);
     }
 
@@ -51,7 +51,8 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         findViewById(R.id.next_smooth_button).setOnClickListener(this);
         findViewById(R.id.pre_button).setOnClickListener(this);
         findViewById(R.id.pre_smooth_button).setOnClickListener(this);
-        flipLayout.setOnChangeListener(this);
+        findViewById(R.id.reset).setOnClickListener(this);
+        scrollLayout.setOnChangeListener(this);
     }
 
     protected abstract int layoutId();
@@ -70,16 +71,19 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
                 onGotoButtonClick(true);
                 break;
             case R.id.next_button:
-                flipLayout.toNext(false);
+                scrollLayout.toNext(false);
                 break;
             case R.id.pre_button:
-                flipLayout.toPre(false);
+                scrollLayout.toPre(false);
                 break;
             case R.id.next_smooth_button:
-                flipLayout.toNext(true);
+                scrollLayout.toNext(true);
                 break;
             case R.id.pre_smooth_button:
-                flipLayout.toPre(true);
+                scrollLayout.toPre(true);
+                break;
+            case R.id.reset:
+                scrollLayout.reset();
                 break;
         }
     }
@@ -88,12 +92,12 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         String s = gotoEdit.getText().toString();
         try {
             int index = Integer.parseInt(s);
-            final int c = flipLayout.getChildCount();
+            final int c = scrollLayout.getChildCount();
             if (index < 0 || index > c) {
                 toast("请输入[0, " + c + ")之间的整数.");
                 clearEdit();
             } else {
-                flipLayout.gotoChild(index, smooth);
+                scrollLayout.gotoChild(index, smooth);
             }
         } catch (Exception e) {
             e.printStackTrace();

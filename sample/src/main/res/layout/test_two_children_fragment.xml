@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.xfy.scrolllayout.ScrollLayout
+        style="@style/scroll_layout_style"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="00dp"
+        app:slt_two_children_adapter=".EditTextTwoChildrenAdapter">
+        <EditText
+            android:id="@+id/view1"
+            style="@style/children_style"
+            android:text="1"/>
+        <EditText
+            android:id="@+id/view2"
+            style="@style/children_style"
+            android:text="2"/>
+    </com.xfy.scrolllayout.ScrollLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            style="@style/next_button_style" />
+        <Button
+            style="@style/next_button_style"
+            android:id="@id/next_smooth_button"
+            android:text="smooth next"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            style="@style/pre_button_style" />
+        <Button
+            style="@style/pre_button_style"
+            android:id="@id/pre_smooth_button"
+            android:text="smooth pre"/>
+    </LinearLayout>
+
+    <EditText
+        style="@style/edit_style" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            style="@style/goto_button_style" />
+        <Button
+            style="@style/goto_button_style"
+            android:id="@id/goto_smooth_button"
+            android:text="smooth goto"/>
+    </LinearLayout>
+    <Button
+        style="@style/reset_button_style" />
+</LinearLayout>

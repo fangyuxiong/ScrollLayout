@@ -45,9 +45,9 @@ public class FadeDrawChildren implements IDrawChildren {
                           @ScrollLayout.ScrollOrientation int scrollOrientation,
                           int index, long drawingTime) {
         if (mWidth == 0)
-            mWidth = parent.getWidth();
+            mWidth = parent.getChildWdith();
         if (mHeight == 0)
-            mHeight = parent.getHeight();
+            mHeight = parent.getChildHeight();
         if (child == null || child.getVisibility() == View.GONE)
             return;
 
@@ -62,7 +62,7 @@ public class FadeDrawChildren implements IDrawChildren {
                 if (curScreenY < scrollY - mHeight) {
                     return;
                 }
-                percent = Math.abs(scrollY - curScreenY) / mHeight;
+                percent = 1 - Math.abs(scrollY - curScreenY) / mHeight;
                 break;
             case HORIZONTAL:
                 final int curScreenX = mWidth * index;

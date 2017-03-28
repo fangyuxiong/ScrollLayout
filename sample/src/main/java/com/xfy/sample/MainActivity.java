@@ -44,6 +44,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 buttonContainer.setVisibility(View.GONE);
                 break;
             case R.id.two  :
+                TestTwoChildrenFragment f2 = new TestTwoChildrenFragment();
+                getFragmentManager().beginTransaction().add(CONTAINER, f2).commit();
+                showFragment = f2;
+                buttonContainer.setVisibility(View.GONE);
                 break;
             case R.id.three:
                 break;

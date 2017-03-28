@@ -28,6 +28,11 @@
         <item name="android:text">goto</item>
     </style>
 
+    <style name="reset_button_style" parent="@style/button_style">
+        <item name="android:id">@id/reset</item>
+        <item name="android:text">reset</item>
+    </style>
+
     <style name="edit_style">
         <item name="android:id">@id/goto_edit</item>
         <item name="android:layout_width">match_parent</item>
@@ -45,15 +50,17 @@
         <item name="android:id">@id/flip_layout</item>
         <item name="slt_style">@style/normal_scroll_style</item>
         <item name="android:layout_gravity">center</item>
+        <item name="fdc_min_alpha">0</item>
     </style>
 
     <style name="normal_scroll_style">
         <item name="flrb_each_degree">90</item>
-        <item name="slt_resistance">3</item>
+        <item name="slt_resistance">1</item>
         <item name="slt_to_normal_offset">3</item>
         <item name="slt_fling_offset">1</item>
         <item name="slt_do_3d_anim">true</item>
         <item name="slt_can_scroll_by_touch">true</item>
-        <item name="slt_scroll_orientation">horizontal</item>
+        <item name="slt_scroll_orientation">vertical</item>
+        <item name="slt_draw_children_interface">FadeDrawChildren</item>
     </style>
 </resources>

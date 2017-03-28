@@ -8,4 +8,5 @@
     <item name="goto_button" type="id"/>
     <item name="goto_smooth_button" type="id"/>
     <item name="goto_edit" type="id"/>
+    <item name="reset" type="id"/>
 </resources>

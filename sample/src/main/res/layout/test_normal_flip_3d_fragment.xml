@@ -5,9 +5,9 @@
 
     <com.xfy.scrolllayout.ScrollLayout
         style="@style/scroll_layout_style"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:padding="100dp">
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="00dp">
         <ImageView
             android:id="@+id/view1"
             style="@style/children_style"
@@ -63,4 +63,6 @@
             android:id="@id/goto_smooth_button"
             android:text="smooth goto"/>
     </LinearLayout>
+    <Button
+        style="@style/reset_button_style" />
 </LinearLayout>
