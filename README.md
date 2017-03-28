@@ -12,7 +12,7 @@
 `build.gradle`中添加:
 ```
 dependencies {
-    compile 'com.xfy.scrolllayout:library:1.0'
+    compile 'com.xfy.scrolllayout:library:1.1'
 }
 ```
 layout中添加:

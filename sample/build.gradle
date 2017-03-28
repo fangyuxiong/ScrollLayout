@@ -20,6 +20,6 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
-    compile project(':library')
-//    compile 'com.xfy.scrolllayout:library:1.0'
+//    compile project(':library')
+    compile 'com.xfy.scrolllayout:library:1.1'
 }
